@@ -94,45 +94,28 @@
  }
  
  ofus () {
-   unset server
-   server=$(echo ${txt_ofuscatw}|cut -d':' -f1)
-   unset txtofus
-   number=$(expr length $1)
-   for((i=1; i<$number+1; i++)); do
-     txt[$i]=$(echo "$1" | cut -b $i)
-     case ${txt[$i]} in
-      ".")txt[$i]="*";;
-      "*")txt[$i]=".";;
-      "_")txt[$i]="@";;
-      "@")txt[$i]="_";;
-      #"1")txt[$i]="@";;
-      #"@")txt[$i]="1";;
-      #"2")txt[$i]="?";;
-      #"?")txt[$i]="2";;
-      #"4")txt[$i]="%";;
-      #"%")txt[$i]="4";;
-      "-")txt[$i]="K";;
-      "K")txt[$i]="-";;
-      "1")txt[$i]="f";;
-      "2")txt[$i]="e";;
-      "3")txt[$i]="d";;
-      "4")txt[$i]="c";;
-      "5")txt[$i]="b";;
-      "6")txt[$i]="a";;
-      "7")txt[$i]="9";;
-      "8")txt[$i]="8";;
-      "9")txt[$i]="7";;
-      "a")txt[$i]="6";;
-      "b")txt[$i]="5";;
-      "c")txt[$i]="4";;
-      "d")txt[$i]="3";;
-      "e")txt[$i]="2";;
-      "f")txt[$i]="1";;
-    esac
-     txtofus+="${txt[$i]}"
-   done
-   echo "$txtofus" | rev
- }
+	unset server
+	server=$(echo ${txt_ofuscatw}|cut -d':' -f1)
+	unset txtofus
+	number=$(expr length $1)
+	for((i=1; i<$number+1; i++)); do
+		txt[$i]=$(echo "$1" | cut -b $i)
+		case ${txt[$i]} in
+			".")txt[$i]="*";;
+			"*")txt[$i]=".";;
+			"1")txt[$i]="@";;
+			"@")txt[$i]="1";;
+			"2")txt[$i]="?";;
+			"?")txt[$i]="2";;
+			"4")txt[$i]="%";;
+			"%")txt[$i]="4";;
+			"-")txt[$i]="K";;
+			"K")txt[$i]="-";;
+		esac
+		txtofus+="${txt[$i]}"
+	done
+	echo "$txtofus" | rev
+}
  
  function_verify () {
    permited=$(curl -sSL "https://raw.githubusercontent.com/NearVPN/Control/master/Control-IP")
