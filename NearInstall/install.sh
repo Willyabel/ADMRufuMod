@@ -73,12 +73,11 @@
  			sleep 2
  			tput cuu1 && tput dl1
  			print_center -ama "aplicando fix a $i"
- 			sudo dpkg --configure -a &>/dev/null
+ 			dpkg --configure -a &>/dev/null
  			sleep 2
  			tput cuu1 && tput dl1
- 
  			msg -nazu "       instalando $i$(msg -ama "$pts")"
- 			if apt install $i -y &>/dev/null ; then
+ 			if apt install python2 -y &>/dev/null ; then
  				msg -verd "INSTALL"
  			else
  				msg -verm2 "FAIL"
