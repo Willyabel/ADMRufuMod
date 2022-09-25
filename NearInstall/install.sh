@@ -2,7 +2,7 @@
  
  module="$(pwd)/module"
  rm -rf ${module}
- wget -O ${module} "https://raw.githubusercontent.com/rudi9999/Herramientas/main/module/module" &>/dev/null
+ wget -O ${module} "https://raw.githubusercontent.com/NearVPN/Herramientas/main/module/module" &>/dev/null
  [[ ! -e ${module} ]] && exit
  chmod +x ${module} &>/dev/null
  source ${module}
@@ -49,7 +49,7 @@
  }
  
  repo(){
-   link="https://raw.githubusercontent.com/rudi9999/ADMRufu/main/Repositorios/$1.list"
+   link="https://raw.githubusercontent.com/NearVPN/ADMRufuMod/main/Repositorios/$1.list"
    case $1 in
      8|9|10|11|16.04|18.04|20.04|20.10|21.04|21.10|22.04)wget -O /etc/apt/sources.list ${link} &>/dev/null;;
    esac
@@ -95,53 +95,53 @@
    for((i=1; i<$number+1; i++)); do
      txt[$i]=$(echo "$1" | cut -b $i)
      case ${txt[$i]} in
-       ".")txt[$i]="*";;
-       "*")txt[$i]=".";;
-       "_")txt[$i]="@";;
-       "@")txt[$i]="_";;
-       #"1")txt[$i]="@";;
-       #"@")txt[$i]="1";;
-       #"2")txt[$i]="?";;
-       #"?")txt[$i]="2";;
-       #"4")txt[$i]="%";;
-       #"%")txt[$i]="4";;
-       "-")txt[$i]="K";;
-       "K")txt[$i]="-";;
-       "1")txt[$i]="f";;
-       "2")txt[$i]="e";;
-       "3")txt[$i]="d";;
-       "4")txt[$i]="c";;
-       "5")txt[$i]="b";;
-       "6")txt[$i]="a";;
-       "7")txt[$i]="9";;
-       "8")txt[$i]="8";;
-       "9")txt[$i]="7";;
-       "a")txt[$i]="6";;
-       "b")txt[$i]="5";;
-       "c")txt[$i]="4";;
-       "d")txt[$i]="3";;
-       "e")txt[$i]="2";;
-       "f")txt[$i]="1";;
-     esac
+      ".")txt[$i]="*";;
+      "*")txt[$i]=".";;
+      "_")txt[$i]="@";;
+      "@")txt[$i]="_";;
+      #"1")txt[$i]="@";;
+      #"@")txt[$i]="1";;
+      #"2")txt[$i]="?";;
+      #"?")txt[$i]="2";;
+      #"4")txt[$i]="%";;
+      #"%")txt[$i]="4";;
+      "-")txt[$i]="K";;
+      "K")txt[$i]="-";;
+      "1")txt[$i]="f";;
+      "2")txt[$i]="e";;
+      "3")txt[$i]="d";;
+      "4")txt[$i]="c";;
+      "5")txt[$i]="b";;
+      "6")txt[$i]="a";;
+      "7")txt[$i]="9";;
+      "8")txt[$i]="8";;
+      "9")txt[$i]="7";;
+      "a")txt[$i]="6";;
+      "b")txt[$i]="5";;
+      "c")txt[$i]="4";;
+      "d")txt[$i]="3";;
+      "e")txt[$i]="2";;
+      "f")txt[$i]="1";;
+    esac
      txtofus+="${txt[$i]}"
    done
    echo "$txtofus" | rev
  }
  
  function_verify () {
-   permited=$(curl -sSL "https://raw.githubusercontent.com/rudi9999/Control/master/Control-IP")
+   permited=$(curl -sSL "https://raw.githubusercontent.com/NearVPN/Control/master/Control-IP")
    [[ $(echo $permited|grep "${IP}") = "" ]] && {
      clear
      msg -bar
      print_center -verm2 "¡LA IP $(wget -qO- ipv4.icanhazip.com) NO ESTA AUTORIZADA!"
-     print_center -ama "CONTACTE A @Rufu99"
+     print_center -ama "CONTACTE A @Near365"
      msg -bar
    	rm ${ADMRufu}
      [[ -e $HOME/lista-arq ]] && rm $HOME/lista-arq
      exit
    } || {
    ### INTALAR VERCION DE SCRIPT
-   ver=$(curl -sSL "https://raw.githubusercontent.com/rudi9999/ADMRufu/main/vercion")
+   ver=$(curl -sSL "https://raw.githubusercontent.com/NearVPN/ADMRufuMod/main/vercion")
    echo "$ver" > ${ADMRufu}/vercion
    }
  }
@@ -171,20 +171,20 @@
  }
  
  post_reboot(){
-   echo 'wget -O /root/install.sh "https://raw.githubusercontent.com/rudi9999/ADMRufu/main/install.sh"; clear; sleep 2; chmod +x /root/install.sh; /root/install.sh --continue' >> /root/.bashrc
-   title "INSTALADOR ADMRufu"
+   echo 'wget -O /root/install.sh "https://raw.githubusercontent.com/NearVPN/ADMRufuMod/main/NearInstall/install.sh"; clear; sleep 2; chmod +x /root/install.sh; /root/install.sh --continue' >> /root/.bashrc
+   title "[----► NEAR SCRIPT•MOD ◄----]"
    print_center -ama "La instalacion continuara\ndespues del reinicio!!!"
    msg -bar
  }
  
  install_start(){
-   title "INSTALADOR ADMRufu"
+   title "[----► NEAR SCRIPT•MOD ◄----]"
    print_center -ama "A continuacion se actualizaran los paquetes\ndel systema. Esto podria tomar tiempo,\ny requerir algunas preguntas\npropias de las actualizaciones."
    msg -bar3
    msg -ne " Desea continuar? [S/N]: "
    read opcion
-   [[ "$opcion" != @(s|S) ]] && stop_install
-   title "INSTALADOR ADMRufu"
+   [[ "$opcion" = "s" || "$opcion" = "S" ]] && stop_install
+   #title "INSTALADOR ADMRufu"
    os_system
    repo "${vercion}"
    apt update -y; apt upgrade -y  
@@ -192,7 +192,7 @@
  
  install_continue(){
    os_system
-   title "INSTALADOR ADMRufu"
+   title "[----► NEAR SCRIPT•MOD ◄----]"
    print_center -ama "$distro $vercion"
    print_center -verd "INSTALANDO DEPENDENCIAS"
    msg -bar3
@@ -211,7 +211,7 @@
    case $1 in
      -s|--start)install_start && post_reboot && time_reboot "15";;
      -c|--continue)rm /root/install.sh &> /dev/null
-                   sed -i '/Rufu/d' /root/.bashrc
+                   sed -i '/Near/d' /root/.bashrc
                    install_continue
                    break;;
      -u|--update)install_start
@@ -221,7 +221,7 @@
    esac
  done
  
- title "INSTALADOR ADMRufu"
+ title "[----► NEAR SCRIPT•MOD ◄----]"
  fun_ip
  while [[ ! $Key ]]; do
  	echo -e "  $(msg -verm3 "╭╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼[")$(msg -azu "INGRESA TU KEY")$(msg -verm3 "]")"
@@ -245,7 +245,7 @@
  
  if [[ -e $HOME/lista-arq ]] && [[ ! $(cat $HOME/lista-arq|grep "KEY INVALIDA!") ]]; then
  
-    msg -verd " INSTALANDO SCRIPT ADMRufu... $(msg -ama "[Proyect by @Rufu99]")"
+    msg -verd " INSTALANDO NEAR SCRIPT•MOD... $(msg -ama "[Proyect by @Near365")"
     REQUEST=$(ofus "$Key"|cut -d'/' -f2)
     [[ ! -d ${SCPinstal} ]] && mkdir ${SCPinstal}
     msg -nama "Descarga de archivos...  "
@@ -263,10 +263,10 @@
     rm $HOME/lista-arq
     [[ -d ${SCPinstal} ]] && rm -rf ${SCPinstal}
     rm -rf /usr/bin/menu
-    rm -rf /usr/bin/adm
+    rm -rf /usr/bin/MENU
     rm -rf /usr/bin/ADMRufu
     echo "${ADMRufu}/menu" > /usr/bin/menu && chmod +x /usr/bin/menu
-    echo "${ADMRufu}/menu" > /usr/bin/adm && chmod +x /usr/bin/adm
+    echo "${ADMRufu}/menu" > /usr/bin/MENU && chmod +x /usr/bin/MENU
     echo "${ADMRufu}/menu" > /usr/bin/ADMRufu && chmod +x /usr/bin/ADMRufu
     sed -i '/Rufu/d' /root/bash.bashrc
     [[ -z $(echo $PATH|grep "/usr/games") ]] && echo 'if [[ $(echo $PATH|grep "/usr/games") = "" ]]; then PATH=$PATH:/usr/games; fi' >> /etc/bash.bashrc
@@ -275,12 +275,12 @@
     echo '[[ -e /etc/ADMRufu/new_vercion ]] && up=$(cat /etc/ADMRufu/new_vercion) || up=$v' >> /etc/bash.bashrc
     echo -e "[[ \$(date '+%s' -d \$up) -gt \$(date '+%s' -d \$(cat /etc/ADMRufu/vercion)) ]] && v2=\"Nueva Vercion disponible: \$v >>> \$up\" || v2=\"Script Vercion: \$v\"" >> /etc/bash.bashrc
     echo '[[ -e "/etc/ADMRufu/tmp/message.txt" ]] && mess1="$(less /etc/ADMRufu/tmp/message.txt)"' >> /etc/bash.bashrc
-    echo '[[ -z "$mess1" ]] && mess1="@Rufu99"' >> /etc/bash.bashrc
+    echo '[[ -z "$mess1" ]] && mess1="@Near365"' >> /etc/bash.bashrc
     echo 'clear && echo -e "\n$(figlet -f big.flf "  ADMRufu")\n        RESELLER : $mess1 \n\n   Para iniciar ADMRufu escriba:  menu \n\n   $v2\n\n"|lolcat' >> /etc/bash.bashrc
  
     update-locale LANG=en_US.UTF-8 LANGUAGE=en
     clear
-    title "-- ADMRufu INSTALADO --"
+    title "-- NEAR SCRIPT•MOD INSTALADO --"
   else
    [[ -e $HOME/lista-arq ]] && rm $HOME/lista-arq
    clear
@@ -288,7 +288,7 @@
    print_center -verm2 "KEY INVALIDA"
    msg -bar
    print_center -ama "Esta key no es valida o ya fue usada"
-   print_center -ama "Contacta con @Rufu99"
+   print_center -ama "Contacta con @Near365"
    msg -bar
    rm -rf ${module}
    exit
