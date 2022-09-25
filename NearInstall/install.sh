@@ -76,7 +76,7 @@
  			dpkg --configure -a &>/dev/null
  			sleep 2
  			tput cuu1 && tput dl1
- 			msg -nazu "       instalando $i$(msg -ama "$pts")"
+ 			msg -nazu "       instalando python2$(msg -ama "$pts")"
  			if apt install python2 -y &>/dev/null ; then
  				msg -verd "INSTALL"
  			else
