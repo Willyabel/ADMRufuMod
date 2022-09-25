@@ -22,7 +22,7 @@
  rm $(pwd)/$0 &> /dev/null
  
  stop_install(){
-  	title "INSTALACION CANCELADA"
+  	title "INSTALACIÓN CANCELADA"
   	exit
   }
  
@@ -181,9 +181,11 @@
    title "[----► NEAR SCRIPT•MOD ◄----]"
    print_center -ama "A continuacion se actualizaran los paquetes\ndel systema. Esto podria tomar tiempo,\ny requerir algunas preguntas\npropias de las actualizaciones."
    msg -bar3
-   msg -ne " Desea continuar? [S/N]: "
-   read opcion
+   read -p "Desea continuar? [S/N]: " -e -i n opcion
    [[ "$opcion" = "s" || "$opcion" = "S" ]] && stop_install
+   #msg -ne " Desea continuar? [S/N]: "
+   #read opcion
+   #[[ "$opcion" = "s" || "$opcion" = "S" ]] && stop_install   
    #title "INSTALADOR ADMRufu"
    os_system
    repo "${vercion}"
@@ -276,7 +278,7 @@
     echo -e "[[ \$(date '+%s' -d \$up) -gt \$(date '+%s' -d \$(cat /etc/ADMRufu/vercion)) ]] && v2=\"Nueva Vercion disponible: \$v >>> \$up\" || v2=\"Script Vercion: \$v\"" >> /etc/bash.bashrc
     echo '[[ -e "/etc/ADMRufu/tmp/message.txt" ]] && mess1="$(less /etc/ADMRufu/tmp/message.txt)"' >> /etc/bash.bashrc
     echo '[[ -z "$mess1" ]] && mess1="@Near365"' >> /etc/bash.bashrc
-    echo 'clear && echo -e "\n$(figlet -f big.flf "  ADMRufu")\n        RESELLER : $mess1 \n\n   Para iniciar ADMRufu escriba:  menu \n\n   $v2\n\n"|lolcat' >> /etc/bash.bashrc
+    echo 'clear && echo -e "\n$(figlet -f big.flf "  NEAR-MOD")\n        RESELLER : $mess1 \n\n   Para iniciar NEAR-MOD escriba: menu o MENU \n\n   $v2\n\n"|lolcat' >> /etc/bash.bashrc
  
     update-locale LANG=en_US.UTF-8 LANGUAGE=en
     clear
