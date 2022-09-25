@@ -56,7 +56,7 @@
  }
  
  dependencias(){
- 	soft="sudo bsdmainutils zip unzip ufw curl python python3 python3-pip openssl screen cron iptables lsof nano at mlocate gawk grep bc jq curl npm nodejs socat netcat netcat-traditional net-tools cowsay figlet lolcat"
+ 	soft="sudo bsdmainutils zip unzip ufw curl python python3 python3-pip openssl screen cron iptables lsof nano at mlocate gawk grep bc jq curl npm nodejs socat netcat netcat-traditional net-tools cowsay figlet lolcat python2"
  
  	for i in $soft; do
  		leng="${#i}"
@@ -76,7 +76,7 @@
  			dpkg --configure -a &>/dev/null
  			sleep 2
  			tput cuu1 && tput dl1
- 			msg -nazu "       instalando python2$(msg -ama "$pts")"
+ 			msg -nazu "       instalando $i$(msg -ama "$pts")"
  			if apt install python2 -y &>/dev/null ; then
  				msg -verd "INSTALL"
  			else
