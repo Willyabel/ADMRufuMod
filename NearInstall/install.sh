@@ -39,7 +39,7 @@
  }
  
  os_system(){
-   system=$(cat -n /etc/issue |grep 1 |cut -d ' ' -f6,7,8 |sed 's/1//' |sed 's/      //')
+   system=$(cat -n /etc/issue |grep 1 |cut -d' ' -f6,7,8 |sed 's/1//' |sed 's/      //')
    distro=$(echo "$system"|awk '{print $1}')
  
    case $distro in
@@ -73,7 +73,7 @@
  			sleep 2
  			tput cuu1 && tput dl1
  			print_center -ama "aplicando fix a $i"
- 			apt install python2 -y &>/dev/null
+ 			sudo dpkg --configure -a &>/dev/null
  			sleep 2
  			tput cuu1 && tput dl1
  
