@@ -181,8 +181,8 @@
    title "[----► NEAR SCRIPT•MOD ◄----]"
    print_center -ama "A continuacion se actualizaran los paquetes\ndel systema. Esto podria tomar tiempo,\ny requerir algunas preguntas\npropias de las actualizaciones."
    msg -bar3
-   read -p "Desea continuar? [S/N]: " -e -i S opcion
-   [[ "$opcion" = "s" || "$opcion" = "S" ]] && stop_install
+   read -p "Desea continuar? [S/N]: " -e -i n opcion
+   [[ "$opcion" = "N" || "$opcion" = "n" ]] && stop_install
    #msg -ne " Desea continuar? [S/N]: "
    #read opcion
    #[[ "$opcion" = "s" || "$opcion" = "S" ]] && stop_install   
