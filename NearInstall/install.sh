@@ -73,7 +73,7 @@
  		leng2="${#i2}"
  		puntos2=$(( 21 - $leng2))
  		pts2="."
- 		for (( a = 0; a < $puntos; a++ )); do
+ 		for (( a = 0; a < $puntos2; a++ )); do
  			pts2+="."
  		done		
  			msg -verm2 "FAIL"
