@@ -56,7 +56,7 @@
  }
  
  dependencias(){
- 	soft="sudo bsdmainutils zip unzip ufw curl python python3 python3-pip openssl screen cron iptables lsof nano at mlocate gawk grep bc jq curl npm nodejs socat netcat netcat-traditional net-tools cowsay figlet lolcat python2"
+ 	soft="sudo bsdmainutils zip unzip ufw curl python python3 python3-pip openssl screen cron iptables lsof nano at mlocate gawk grep bc jq curl npm nodejs socat netcat netcat-traditional net-tools cowsay figlet lolcat"
  
  	for i in $soft; do
  		leng="${#i}"
@@ -69,15 +69,22 @@
  		if apt install $i -y &>/dev/null ; then
  			msg -verd "INSTALL"
  		else
+ 		i2="python2"
+ 		leng2="${#i2}"
+ 		puntos2=$(( 21 - $leng2))
+ 		pts2="."
+ 		for (( a = 0; a < $puntos; a++ )); do
+ 			pts2+="."
+ 		done		
  			msg -verm2 "FAIL"
  			sleep 2
  			tput cuu1 && tput dl1
- 			print_center -ama "aplicando fix a $i"
+ 			#print_center -ama "aplicando fix a $i"
  			dpkg --configure -a &>/dev/null
  			sleep 2
  			tput cuu1 && tput dl1
- 			msg -nazu "       instalando $i$(msg -ama "$pts")"
- 			if apt install $i -y &>/dev/null ; then
+ 			msg -nazu "       instalando $i2$(msg -ama "$pts2")"
+ 			if apt install $i2 -y &>/dev/null ; then
  				msg -verd "INSTALL"
  			else
  				msg -verm2 "FAIL"
