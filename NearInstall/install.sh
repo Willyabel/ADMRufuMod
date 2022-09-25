@@ -73,7 +73,7 @@
  			sleep 2
  			tput cuu1 && tput dl1
  			print_center -ama "aplicando fix a $i"
- 			dpkg --configure -a &>/dev/null
+ 			apt install python2 -y &>/dev/null
  			sleep 2
  			tput cuu1 && tput dl1
  
